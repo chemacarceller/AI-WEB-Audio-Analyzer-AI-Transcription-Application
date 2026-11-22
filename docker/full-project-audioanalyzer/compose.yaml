@@ -1,0 +1,24 @@
+name: ia
+services: 
+  audioanalyzer:
+    image: chemacarceller/audioanalyzer_ia:1.0
+    build:
+      context: ../..
+      dockerfile: docker/full-project-audioanalyzer/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4505:4505"
+    env_file:
+      - ../../.env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - whisper_cache:/root/.cache
+
+volumes:
+  whisper_cache:

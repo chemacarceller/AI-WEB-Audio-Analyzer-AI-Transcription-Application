@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/layout.css">
+<% if (typeof style !== 'undefined' && style) { -%>
+    <%- style %>
+<% } -%>
+        <%- defineContent('scripts') %>
+        <script type="module" src="/js/layout.js"></script>
+    </head>
+    <body>
+        <main>
+            <div class="contenedor">
+<%- body -%>
+            </div>
+        </main>
+    </body>
+</html>
